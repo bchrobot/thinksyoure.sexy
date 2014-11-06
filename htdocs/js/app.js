@@ -1,3 +1,4 @@
+debug = false;
 (function(){
 	// Subdomain handling
 	var url = debug ? "zeta.psi.thinksyoure.sexy" : window.location.host;
@@ -7,8 +8,8 @@
 	// Update Noun field
 	var name = subdomain.replace(".", " ");
 	var noun = $("#noun");
+	if(name != "everyone") noun.val(name);
 	noun
-		.val(name)
 		.focus()
 		.keypress(function(e) {
 			if(e.which == 13) {
