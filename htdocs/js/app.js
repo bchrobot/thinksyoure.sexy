@@ -1,13 +1,24 @@
-debug = false;
-
 (function(){
-  var url = debug ? "zeta.psi.thinksyoure.sexy" : window.location.host;
-  var urlParts = url.split(".");
-  var subdomain = urlParts.slice(0, -2);
-  var name = subdomain.join(" ");
-  dalert(name);
-})();
+	// Subdomain handling
+	var url = debug ? "zeta.psi.thinksyoure.sexy" : window.location.host;
+	var urlParts = url.split(".");
+	var subdomain = urlParts.slice(0, -2).join(".");
+	
+	// Update Noun field
+	var name = subdomain.replace(".", " ");
+	var noun = $("#noun");
+	noun
+		.val(name)
+		.focus()
+		.keypress(function(e) {
+			if(e.which == 13) {
+				var newVal = noun.val().replace(/[^a-zA-Z ]/g, '').replace(" ", '.').toLowerCase();
+				newVal = (newVal == "" && "everyone" != subdomain) ? "everyone" : newVal;
+				if (newVal != "" && newVal != subdomain) {
+					window.location.href = "http://" + newVal + ".thinksyoure.sexy";
+				}
+			}
+		});
 
-function dalert(string) {
-	if (debug) alert(string);
-}
+
+})();
