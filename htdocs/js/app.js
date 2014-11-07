@@ -31,26 +31,23 @@ google.setOnLoadCallback(function(){
 
 
 
-	// Create an Image Search instance.
-    window.imageSearch = new google.search.ImageSearch();
-
-    // Set searchComplete as the callback function when a search is 
-    // complete.  The imageSearch object will have results in it.
-    imageSearch.setSearchCompleteCallback(this, searchComplete, null);
-
-    // Find me a beautiful car.
-    imageSearch.execute(name + " sexy");
-    
-    // Include the required Google branding
-    google.search.Search.getBranding('branding');
-	// $("#background").css("backgroundImage", "url(img/andres.jpg)");
-	
-	console.log("subdomain: " + subdomain);
 	if (subdomain in special) {
 		$("#background").attr("src", special[subdomain]);
 	}
+	else {
+		// Create an Image Search instance.
+	    window.imageSearch = new google.search.ImageSearch();
 
+	    // Set searchComplete as the callback function when a search is 
+	    // complete.  The imageSearch object will have results in it.
+	    imageSearch.setSearchCompleteCallback(this, searchComplete, null);
 
+	    // Find me a beautiful car.
+	    imageSearch.execute(name + " sexy");
+	    
+	    // Include the required Google branding
+	    google.search.Search.getBranding('branding');
+	}
 });
 
 
