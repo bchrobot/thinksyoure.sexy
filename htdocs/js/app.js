@@ -1,6 +1,7 @@
 debug = false;
 
 special = {
+	'everyone': 'http://cofeehgoestopeacecorps.files.wordpress.com/2013/08/1077872_10151575173891452_633936788_o.jpg',
 	'andres': 'img/andres.jpg',
 	'jack.kelly': 'img/jack.jpg'
 };
@@ -15,6 +16,7 @@ google.setOnLoadCallback(function(){
 	
 	// Update Noun field
 	var name = subdomain.replace(".", " ");
+	document.title = name.toUpperCase() + " THINKS YOU'RE SEXY";
 	var noun = $("#noun");
 	if(name != "everyone") noun.val(name);
 	noun
@@ -55,15 +57,11 @@ google.setOnLoadCallback(function(){
 			google.search.ImageSearch.IMAGETYPE_FACES
 		);
 
-	    // Set searchComplete as the callback function when a search is 
-	    // complete.  The imageSearch object will have results in it.
 	    imageSearch.setSearchCompleteCallback(this, searchComplete, null);
 
-	    // Find me a beautiful car.
 	    imageSearch.execute(name);
 	    
-	    // Include the required Google branding
-	    google.search.Search.getBranding('branding');
+	    google.search.Search.getBranding('body');
 	}
 });
 
@@ -74,5 +72,8 @@ function searchComplete() {
         if (imageSearch.results && imageSearch.results.length > 0) {
         	$("#background").attr("src", results[1].url);
         	console.log(results[1]);
+        }
+        else {
+        	$("#background").attr("src", 'img/andres.jpg';
         }
       }
