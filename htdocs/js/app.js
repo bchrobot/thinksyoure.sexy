@@ -37,13 +37,30 @@ google.setOnLoadCallback(function(){
 	else {
 		// Create an Image Search instance.
 	    window.imageSearch = new google.search.ImageSearch();
+	    imageSearch.setQueryAddition('sexy');
+		imageSearch.setRestriction(
+			google.search.Search.RESTRICT_SAFESEARCH,
+			google.search.Search.SAFESEARCH_OFF
+		);
+		imageSearch.setRestriction(
+			google.search.ImageSearch.RESTRICT_IMAGESIZE,
+			google.search.ImageSearch.IMAGESIZE_LARGE
+		);
+		imageSearch.setRestriction(
+			google.search.ImageSearch.RESTRICT_COLORFILTER,
+			google.search.ImageSearch.COLOR_BLACK
+		);
+		imageSearch.setRestriction(
+			google.search.ImageSearch.RESTRICT_IMAGETYPE,
+			google.search.ImageSearch.IMAGETYPE_FACES
+		);
 
 	    // Set searchComplete as the callback function when a search is 
 	    // complete.  The imageSearch object will have results in it.
 	    imageSearch.setSearchCompleteCallback(this, searchComplete, null);
 
 	    // Find me a beautiful car.
-	    imageSearch.execute(name + " sexy");
+	    imageSearch.execute(name);
 	    
 	    // Include the required Google branding
 	    google.search.Search.getBranding('branding');
@@ -55,7 +72,7 @@ function searchComplete() {
         // Check that we got results
         var results = imageSearch.results;
         if (imageSearch.results && imageSearch.results.length > 0) {
-        	$("#background").attr("src", results[1].tbUrl);
+        	$("#background").attr("src", results[1].url);
         	console.log(results[1]);
         }
       }
