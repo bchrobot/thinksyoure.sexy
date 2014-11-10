@@ -2,7 +2,7 @@ debug = false;
 
 special = {
 	'andres': 'img/andres.jpg',
-	'jack.kelly': ''
+	'jack.kelly': 'img/jack.jpg'
 };
 
 google.load('search', '1');
