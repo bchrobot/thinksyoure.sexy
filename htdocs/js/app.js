@@ -74,6 +74,6 @@ function searchComplete() {
         	console.log(results[1]);
         }
         else {
-        	$("#background").attr("src", 'img/andres.jpg';
+        	$("#background").attr("src", 'img/andres.jpg');
         }
       }
